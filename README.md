@@ -7,6 +7,11 @@ Write a basic set of tests for the UI at http://ec2-34-250-139-60.eu-west-1.comp
 - based off the [WebdriverIO/cucumberJS boilerplate](https://github.com/webdriverio/cucumber-boilerplate) 
 - [Allure](https://www.npmjs.com/package/allure-commandline) reports (Requires Java 8)
 
+## Requirements
+- nodejs (LTS)
+- git
+- Java 8 (for Allure)
+
 ## To Run
 1. clone repository
 2. `npm install` the project
