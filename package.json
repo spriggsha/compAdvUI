@@ -1,0 +1,29 @@
+{
+  "name": "compl_adv",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-proposal-export-default-from": "^7.8.3",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/register": "^7.9.0",
+    "@log4js-node/log4js-api": "^1.0.2",
+    "@rpii/wdio-html-reporter": "^6.0.4",
+    "@wdio/cli": "^6.1.4",
+    "@wdio/cucumber-framework": "^6.1.1",
+    "@wdio/local-runner": "^6.1.4",
+    "@wdio/mocha-framework": "^6.1.0",
+    "@wdio/spec-reporter": "^6.0.16",
+    "@wdio/sync": "^6.1.0",
+    "chromedriver": "^81.0.0",
+    "log4js": "^6.2.1",
+    "wdio-chromedriver-service": "^6.0.2"
+  }
+}
