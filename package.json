@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run clean-report & npm run clean-results & npx wdio & npm run allure-generate & npm run allure-open",
+    "clean-results" : "node_modules/.bin/rimraf allure-results",
+    "clean-report" : "node_modules/.bin/rimraf allure-report",
+    "allure-generate": "allure generate allure-results",
+    "allure-open": "allure open"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +20,7 @@
     "@babel/register": "^7.9.0",
     "@log4js-node/log4js-api": "^1.0.2",
     "@rpii/wdio-html-reporter": "^6.0.4",
+    "@wdio/allure-reporter": "^6.1.1",
     "@wdio/cli": "^6.1.4",
     "@wdio/cucumber-framework": "^6.1.1",
     "@wdio/local-runner": "^6.1.4",
@@ -24,6 +29,7 @@
     "@wdio/sync": "^6.1.0",
     "chromedriver": "^81.0.0",
     "log4js": "^6.2.1",
+    "rimraf": "^3.0.2",
     "wdio-chromedriver-service": "^6.0.2"
   }
 }

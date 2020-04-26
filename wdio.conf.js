@@ -179,32 +179,12 @@ exports.config = {
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter.html
     reporters: ['spec',
-        [wdioHtmlReporter.HtmlReporter, {
-            debug: true,
-            outputDir: './reports/html-reports/',
-            filename: 'report.html',
-            reportTitle: 'Test Report Title',
-
-            //to show the report in a browser when done
-            showInBrowser: true,
-
-            //to turn on screenshots after every test
-            useOnAfterCommandForScreenshot: true,
-
-            // to use the template override option, can point to your own file in the test project:
-            // templateFilename: path.resolve(__dirname, '../template/wdio-html-reporter-alt-template.hbs'),
-
-            // to add custom template functions for your custom template:
-            // templateFuncs: {
-            //     addOne: (v) => {
-            //         return v+1;
-            //     },
-            // },
-
-            //to initialize the logger
-            LOG: log4j.getLogger("default")
-        }
-        ]
+        ['allure', {
+            outputDir: 'allure-results',
+            disableWebdriverStepsReporting: true,
+            disableWebdriverScreenshotsReporting: true,
+            useCucumberStepReporter: true
+        }]
     ],
 
 
@@ -272,22 +252,22 @@ exports.config = {
      */
     // before: function (capabilities, specs) {
     // },
-    before: function (capabilities, specs) {
-
-        { require('@babel/register') }
-
-        let reportAggregator = new wdioHtmlReporter.ReportAggregator({
-            outputDir: './reports/html-reports/',
-            filename: 'master-report.html',
-            reportTitle: 'Master Report',
-            browserName: browser.capabilities.browserName,
-            // to use the template override option, can point to your own file in the test project:
-            // templateFilename: path.resolve(__dirname, '../template/wdio-html-reporter-alt-template.hbs')
-        });
-        reportAggregator.clean();
-
-        global.reportAggregator = reportAggregator;
-    },
+    // before: function (capabilities, specs) {
+    //
+    //     { require('@babel/register') }
+    //
+    //     let reportAggregator = new wdioHtmlReporter.ReportAggregator({
+    //         outputDir: './reports/html-reports/',
+    //         filename: 'master-report.html',
+    //         reportTitle: 'Master Report',
+    //         browserName: browser.capabilities.browserName,
+    //         // to use the template override option, can point to your own file in the test project:
+    //         // templateFilename: path.resolve(__dirname, '../template/wdio-html-reporter-alt-template.hbs')
+    //     });
+    //     reportAggregator.clean();
+    //
+    //     global.reportAggregator = reportAggregator;
+    // },
     /**
      * Runs before a WebdriverIO command gets executed.
      * @param {String} commandName hook command name
@@ -316,20 +296,20 @@ exports.config = {
      * Hook that gets executed _after_ a hook within the suite starts (e.g. runs after calling
      * afterEach in Mocha)
      */
-    afterHook: function (test, context, { error, result, duration, passed, retries }) {
-        console.log('After Hook-------------------------------')
-        const path = require('path');
-        const moment = require('moment');
-
-        // if test passed, ignore, else take and save screenshot.
-        if (test.passed) {
-            return;
-        }
-        const timestamp = moment().format('YYYYMMDD-HHmmss.SSS');
-        const filepath = path.join('reports/html-reports/screenshots/', timestamp + '.png');
-        browser.saveScreenshot(filepath);
-        process.emit('test:screenshot', filepath);
-    },
+    // afterHook: function (test, context, { error, result, duration, passed, retries }) {
+    //     console.log('After Hook-------------------------------')
+    //     const path = require('path');
+    //     const moment = require('moment');
+    //
+    //     // if test passed, ignore, else take and save screenshot.
+    //     if (test.passed) {
+    //         return;
+    //     }
+    //     const timestamp = moment().format('YYYYMMDD-HHmmss.SSS');
+    //     const filepath = path.join('reports/html-reports/screenshots/', timestamp + '.png');
+    //     browser.saveScreenshot(filepath);
+    //     process.emit('test:screenshot', filepath);
+    // },
     /**
      * Function to be executed after a test (in Mocha/Jasmine).
      */
@@ -362,12 +342,12 @@ exports.config = {
      */
     // after: function (result, capabilities, specs) {
     // },
-    after: function (result, capabilities, specs){
-        global.reportAggregator.createReport();
-        // (async () => {
-        //     await global.reportAggregator.createReport();
-        // })();
-    },
+    // after: function (result, capabilities, specs){
+    //     global.reportAggregator.createReport();
+    //     // (async () => {
+    //     //     await global.reportAggregator.createReport();
+    //     // })();
+    // },
     /**
      * Gets executed right after terminating the webdriver session.
      * @param {Object} config wdio configuration object

@@ -3,8 +3,9 @@
 Write a basic set of tests for the UI at http://ec2-34-250-139-60.eu-west-1.compute.amazonaws.com/
 
 ## Tools
-- [WebdriverIO](https://webdriver.io/) using the [Cucumber](https://webdriver.io/docs/frameworks.html#using-cucumber) testRunner and the [HTMLReporter](https://webdriver.io/docs/rpii-wdio-html-reporter.html)
+- [WebdriverIO](https://webdriver.io/) using the [Cucumber](https://webdriver.io/docs/frameworks.html#using-cucumber) testRunner
 - based off the [WebdriverIO/cucumberJS boilerplate](https://github.com/webdriverio/cucumber-boilerplate) 
+- [Allure](https://www.npmjs.com/package/allure-commandline) reports (Requires Java 8)
 
 ## To Run
 1. clone repository
@@ -27,3 +28,4 @@ The framework is currently set to run against `chrome` and to run up to 5 browse
 ###Improvements to make
 - any future version of this framework would require a page object model
 - the given/when/then step files given in the boilerplate code should be replaced with a structure more closely resembling the structure of the application
+- cucumberjs doesn't handle parallelisation all that well; some extra code could make that work better
