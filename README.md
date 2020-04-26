@@ -10,7 +10,7 @@ Write a basic set of tests for the UI at http://ec2-34-250-139-60.eu-west-1.comp
 ## To Run
 1. clone repository
 2. `npm install` the project
-3. `npx wdio`
+3. `npm run test`
 
 ## Configuration
 The framework is currently set to run against `chrome` and to run up to 5 browser instances simultaneously.  To adjust this, modify the `capabilities` array in `./wdio.conf.js`
